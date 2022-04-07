@@ -1,0 +1,7 @@
+FROM ubuntu:20.04
+RUN apt update \
+	&& apt install -y python
+        && apt install -y gpg
+ADD ./data /mnt/files
+EXPOSE 80
+CMD ["python", "-m", "http.server", "-d", "/mnt/files", "80"]
